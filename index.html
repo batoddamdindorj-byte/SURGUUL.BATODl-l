@@ -191,8 +191,8 @@ footer{background:linear-gradient(120deg,#05366c,#07599c);color:white;padding-to
     <h2 class="register-title">ЭЛСЭЛТИЙН БҮРТГЭЛ</h2>
     <div class="yellow-line"></div>
     <p class="description">2026–2027 оны элсэлтийн бүртгэлийн маягтыг бөглөнө үү.</p>
-<from name="contact" netlify>
-    <form id="registration-form">
+<form id="registration-form" name="registration" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="registration">
       <div class="form-group">
         <label for="fullname">Овог, нэр *</label>
         <input id="fullname" name="fullname" type="text" placeholder="Овог нэрээ оруулна уу" required>
@@ -247,7 +247,6 @@ footer{background:linear-gradient(120deg,#05366c,#07599c);color:white;padding-to
 
     <button class="back-button" data-go="home">← Нүүр хуудас руу буцах</button>
   </div>
-  </from>
 </section>
 
 <footer>
@@ -302,14 +301,6 @@ navButtons.forEach(button => {
 
 document.querySelectorAll("[data-go]").forEach(button => {
   button.addEventListener("click", () => showPage(button.dataset.go));
-});
-
-document.getElementById("registration-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-  if (!this.reportValidity()) return;
-
-  alert("Маягт амжилттай бөглөгдлөө. Анхаар: энэ демо хувилбар мэдээллийг серверт хадгалахгүй.");
-  this.reset();
 });
 
 showPage("home");
